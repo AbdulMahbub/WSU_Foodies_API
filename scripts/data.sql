@@ -1,15 +1,15 @@
 -- Dummy Data for app logins
 
-INSERT INTO wsufoodies.`users` (email , 'password', firstName, lastName, age, standing)
+INSERT INTO wsufoodies.`users` (email , `password`, firstName, lastName, age, standing)
 values ('go4374@wayne.edu', 'password', 'Abdul', 'Mahbub', 81, 'Senior');
 
-INSERT INTO wsufoodies.`users` (email , 'password', firstName, lastName, age, standing)
+INSERT INTO wsufoodies.`users` (email , `password`, firstName, lastName, age, standing)
 values ('gz7462@wayne.edu', 'password', 'Nathan', 'Rosenfeld', 72, 'Senior');
 
-INSERT INTO wsufoodies.`users` (email , 'password', firstName, lastName, age, standing)
+INSERT INTO wsufoodies.`users` (email , `password`, firstName, lastName, age, standing)
 values ('gt7198@wayne.edu', 'password', 'Nicholas', 'Driver', 34, 'Senior');
 
-INSERT INTO wsufoodies.`users` (email , 'password', firstName, lastName, age, standing)
+INSERT INTO wsufoodies.`users` (email , `password`, firstName, lastName, age, standing)
 values ('gm0892@wayne.edu', 'password', 'Christopher', 'George', 45, 'Senior');
 
 /*
