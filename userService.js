@@ -16,10 +16,10 @@ const User = function(user) {
 
   };
 
-  User.getUser = (req, resp) => {
+  User.loginUser = (req, resp) => {
     let query = "SELECT firstName, lastName FROM users";
-    if(req.body.email != undefined){
-     query += " where email = '"+req.body.email+"'";
+    if(req.body.email != undefined && req.body.password != undefined){
+     query += " where email = '"+req.body.email+"' AND `password` = '" + req.body.password +"';";
     }
 
     sql.query(query, (err, res) => {

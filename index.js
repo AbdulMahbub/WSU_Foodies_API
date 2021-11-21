@@ -25,7 +25,7 @@ app.use((req, res,next)=>{
 
 app.get('/getAllInfo',users.getAllInfo);
 
-app.get('/getUser',users.getUser);
+app.get('/loginUser',users.loginUser);
 
 app.post('/addUser',cors(),users.addUser);
 
