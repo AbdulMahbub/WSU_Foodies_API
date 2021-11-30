@@ -21,7 +21,11 @@ const User = function(user) {
     if(req.body.email != undefined && req.body.password != undefined){
      query += " where email = '"+req.body.email+"' AND `password` = '" + req.body.password +"';";
     }
+    //Look into escaping
+    // csu youll get sql injection
 
+    //post u want secure 
+    // get not secure
     sql.query(query, (err, res) => {
       if (err) {
         console.log("error: ", err);
@@ -69,6 +73,7 @@ const User = function(user) {
     sql.query(query, (err, res) => {
       if (err) {
         console.log("error: ", err);
+
         resp.json(err);
         return;
       }
@@ -76,6 +81,8 @@ const User = function(user) {
       console.log("Users: ", res);
       resp.json(res);
     });
+    
+
   };
 
   module.exports = User;

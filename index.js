@@ -25,7 +25,8 @@ app.use((req, res,next)=>{
 
 app.get('/getAllInfo',users.getAllInfo);
 
-app.get('/loginUser',users.loginUser);
+// Change to post for security
+app.post('/loginUser',users.loginUser);
 
 app.post('/addUser',cors(),users.addUser);
 
