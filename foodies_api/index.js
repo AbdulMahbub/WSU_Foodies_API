@@ -7,8 +7,6 @@ const jwt = require('jsonwebtoken');
 const customers = require('./customerservice.js');
 const options = {};
 const app = express();
-
-
 // Cors Example on entire application
 app.use(cors());
 // parse requests of content-type: application/json

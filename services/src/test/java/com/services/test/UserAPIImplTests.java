@@ -19,23 +19,26 @@ class UserAPIImplTests {
     @Test
     void addition() {
 
-
         assertEquals(2, 2);
     }
-    @Test
-    void getUserByIdTest() throws IOException {
-        UserServiceApiInter api = new UserServiceApiImpl("https://dummy.restapiexample.com/");
-        api.getUserAllUsers().getData();
-        assertEquals(2,2);
-    }
+
+    /*
+     * @Test
+     * void getUserByIdTest() throws IOException {
+     * UserServiceApiInter api = new
+     * UserServiceApiImpl("https://dummy.restapiexample.com/");
+     * api.getUserAllUsers().getData();
+     * assertEquals(2,2);
+     * }
+     */
     @Test
     void getAuthTest() throws IOException {
-        AuthenicationServiceInter  api = new AuthenicationServiceImpl("http://localhost:3000/");
+        AuthenicationServiceInter api = new AuthenicationServiceImpl("http://localhost:3000/");
         AuthRequest req = new AuthRequest();
         req.setUsername("test");
         req.setPassword("test");
         Token token = api.login(req);
         boolean logged = api.validate(token);
-        assertEquals(true,logged);
+        assertEquals(true, logged);
     }
 }

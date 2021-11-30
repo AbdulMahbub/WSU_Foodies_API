@@ -10,10 +10,12 @@ import retrofit2.http.Header;
 import retrofit2.http.POST;
 
 public interface AuthAPI {
-    @POST("api/auth/login")
-    Call<AuthRequest> login(@Body AuthRequest userRequest);
-    @POST("api/auth/validate")
+    @POST("/auth/v1/login")
+    Call<AuthRequest> login(@Body AuthRequest userRequest );
+
+    @POST("/auth/v1/validate")
     Call<AuthRequest> validate(@Body Token token);
-    @GET("")
+
+    @GET("auth/v1/testToken")
     Call<AuthRequest> getsomething(@Header("token") String token);
 }
