@@ -3,7 +3,7 @@ const https = require('https');
 const http = require('http');
 const cors = require('cors');
 const bodyParser = require("body-parser");
-const customers = require('./customerservice.js');
+const users = require('./userService.js');
 const options = {};
 const app = express();
 
@@ -23,10 +23,12 @@ app.use((req, res,next)=>{
 	next();
 });
 
-app.get('/',customers.getAll);
+app.get('/getAllInfo',users.getAllInfo);
 
-app.post('/getCustomer',customers.getAll);
-app.post('/addUser',cors(),customers.addUser);
+// Change to post for security
+app.post('/loginUser',users.loginUser);
+
+app.post('/addUser',cors(),users.addUser);
 
 // Cors selectively
 app.post('/',cors(),(req , res)=>{
@@ -48,5 +50,5 @@ app.listen = function () {
 	return server.listen.apply(server, arguments)
 }
 
-http.createServer(app).listen(80);
-https.createServer(options, app).listen(443)
+http.createServer(app).listen(980);
+https.createServer(options, app).listen(9443)
