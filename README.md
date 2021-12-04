@@ -1,6 +1,7 @@
 # WSU Foodies API
 The API for the WSU Foodies app
 
+## Download
 Prior to running the api, please download Node JS
 
 Node JS can be downloaded here: https://nodejs.org/en/download/ 
