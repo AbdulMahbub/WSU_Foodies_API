@@ -32,9 +32,26 @@ const User = function(user) {
         resp.json(err);
         return;
       }
-  
-      console.log("User: ", res);
-      resp.json(res);
+
+      // If bad login
+      if(res[0]==null)
+      {
+        console.log("Bad login credentials");
+        resp.status(404).send()
+      }
+      
+      // Good login 
+      else{
+        const objToSend={
+          firstName:res[0].firstName,
+          lastName: res[0].lastName
+        }
+
+        console.log("User: ", res);
+        //resp.json(res);
+        resp.status(200).send(JSON.stringify(objToSend))
+      }
+
     });
   };
 
