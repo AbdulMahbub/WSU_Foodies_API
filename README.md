@@ -1,5 +1,9 @@
-# NodeExpressAndroidRestFulAPI
-Customer Service API
+# WSU Foodies API
+The API for the WSU Foodies app
+
+Prior to running the api, please download Node JS
+
+Node JS can be downloaded here:** https://nodejs.org/en/download/ **
 
 ## Starting the customer API
 ```sh
