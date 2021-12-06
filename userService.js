@@ -73,32 +73,53 @@ const User = function(user) {
   User.addUser = (req, resp) => {
     let query = "";
 
-    // If age not given
-    if(req.body.age == undefined){
-     query = "INSERT INTO users (email, `password`, firstName, lastName, standing) VALUES "+
-      "('"+req.body.email+"', '"+req.body.password+"', '"+req.body.firstName+"','"+ req.body.lastName+ "', '"+
-       req.body.standing+"');";
-    }
-
-    // Age given
-    else{
-      query = "INSERT INTO users (email, `password`, firstName, lastName, age, standing) VALUES "+
-      "('"+req.body.email+"', '"+req.body.password+"', '"+req.body.firstName+"', '"+ req.body.lastName+ "', "+
-       +req.body.age+", '"+req.body.standing+"');";
-    }
-
-    sql.query(query, (err, res) => {
+    // Check if other users exist in db with email
+    let query2= "Select COUNT(*) as count from users where email ='" + req.body.email +"'";
+    sql.query(query2, (err, res) => {
       if (err) {
         console.log("error: ", err);
 
         resp.json(err);
         return;
       }
+      
+      let count= res[0].count
+      if(count>0){
+        console.log("User with that email already exists")
+        resp.status(404).send()
+        return;
+      }
 
-      console.log("Users: ", res);
-      resp.json(res);
-    });
+      else{
+        // If age not given
+    if(req.body.age == undefined){
+      query = "INSERT INTO users (email, `password`, firstName, lastName, standing) VALUES "+
+       "('"+req.body.email+"', '"+req.body.password+"', '"+req.body.firstName+"','"+ req.body.lastName+ "', '"+
+        req.body.standing+"');";
+     }
+ 
+     // Age given
+     else{
+       query = "INSERT INTO users (email, `password`, firstName, lastName, age, standing) VALUES "+
+       "('"+req.body.email+"', '"+req.body.password+"', '"+req.body.firstName+"', '"+ req.body.lastName+ "', "+
+        +req.body.age+", '"+req.body.standing+"');";
+     }
+ 
+     sql.query(query, (err, res) => {
+       if (err) {
+         console.log("error: ", err);
+ 
+         resp.json(err);
+         return;
+       }
+ 
+       console.log("Users: ", res);
+       resp.json(res);
+     });
     
+    }
+
+    });
 
   };
 
